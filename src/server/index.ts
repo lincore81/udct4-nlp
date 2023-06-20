@@ -1,21 +1,32 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import path from 'path';
-import express from 'express'
-import mockAPIResponse from './mockAPI'
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const app = express()
+import { request } from "./api/sentiment";
 
-app.use(express.static('dist'))
-console.log(__dirname)
-app.get('/', function (_, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
+const app = express();
+const port = process.env.PORT || 8080;
 
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
+app.use(bodyParser.json());
+app.use(express.static('dist'));
+app.use('/styles', express.static('src/client/styles'));
 
-app.get('/test', function (_, res) {
-    res.send(mockAPIResponse)
-})
+
+app.listen(port, () => {
+    console.log(`Server listening on ${port}.`);
+});
+
+app.post('/api', async (req, res) => {
+    const json = req.body;
+    console.log(json);
+    if (json?.url) {
+        const response = await request(json.url);
+        console.log("Response: ", response);
+        res.send(response);
+    } else {
+        res.sendStatus(400);
+    }
+});

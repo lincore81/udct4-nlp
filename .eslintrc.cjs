@@ -1,21 +1,28 @@
-/* eslint-disable no-undef */
+/* eslint-env node */
 module.exports = {
-    'env': {
+    env: {
         'browser': true,
         'es2021': true
     },
-    'extends': 'eslint:recommended',
-    'overrides': [
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended'
     ],
+    plugins: [
+        '@typescript-eslint'
+    ],
+    overrides: [],
+    parser:  '@typescript-eslint/parser',
     'parserOptions': {
         'ecmaVersion': 6,
         'sourceType': 'module'
     },
-    'rules': {
+    rules: {
         'semi': ['error', 'always'],
         'no-trailing-spaces': ['error', {}]
     },
     ignorePatterns: [
         "webpack.config.js"
-    ]
+    ],
+    root: true
 };

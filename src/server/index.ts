@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 
@@ -14,14 +13,8 @@ app.use(bodyParser.json());
 app.use(express.static('dist'));
 app.use('/styles', express.static('src/client/styles'));
 
-
-app.listen(port, () => {
-    console.log(`Server listening on ${port}.`);
-});
-
 app.post('/api', async (req, res) => {
     const json = req.body;
-    console.log(json);
     if (json?.url) {
         const response = await request(json.url);
         console.log("Response: ", response);
@@ -29,4 +22,8 @@ app.post('/api', async (req, res) => {
     } else {
         res.sendStatus(400);
     }
+});
+
+app.listen(port, () => {
+    console.log(`Server listening on ${port}.`);
 });

@@ -6,7 +6,7 @@ const path = require('path');
 const DotenvPlugin = require('dotenv-webpack');
 const ESLintPlugin = require("eslint-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -29,6 +29,7 @@ const config = {
         }),
         new DotenvPlugin(),
         new HTMLWebpackPlugin({template: 'src/client/views/index.html'}),
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
@@ -38,12 +39,12 @@ const config = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.css$/i,
-                use: [stylesHandler,'css-loader'],
-            },
-            {
                 test: /\.s[ac]ss$/i,
-                use: [stylesHandler, 'css-loader', 'sass-loader'],
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.(svg|ttf|woff|woff2|png|jpg|gif)$/i,

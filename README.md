@@ -6,9 +6,10 @@
 - Create `.env`:
   ```
   PORT=8080
-  NLP_API_KEY=<your meaning cloud api key> 
+  NLP_API_KEY=<your meaningcloud api key> 
   ```
-- Run `npm i && npm run start`.
+- Run `npm i && npm run dev`.
+- In another terminal, run `npm run start`
 - Open `localhost:8080` in a browser
 
 ## Project Requirements

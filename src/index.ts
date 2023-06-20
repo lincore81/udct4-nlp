@@ -1,3 +1,9 @@
+import './client/styles/resets.scss';
+import './client/styles/base.scss';
+import './client/styles/footer.scss';
+import './client/styles/form.scss';
+import './client/styles/header.scss';
+
 const ENDPOINT = "/api";
 
 const formElem = document.querySelector(`form`);
@@ -6,22 +12,13 @@ const errorsElem = document.querySelector(`#errors`);
 const resultsElem = document.querySelector(`#results`);
 
 if (!(formElem && inputElem && errorsElem && resultsElem)) {
-  throw new Error("Bad html");
+  throw new Error("I expected a few more elements to be honest.");
 }
 
-const getSentiment = async (url: string) => {
-  const body = JSON.stringify({url});
-  console.log("posting ", body);
-  const result = await fetch(ENDPOINT,  {
-    method: "POST",
-    body,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-  }});
-  console.log("result", result);
-  return result;
-};
+const getSentiment = async (url: string) => await fetch(ENDPOINT, {
+  method: "POST",
+  body: JSON.stringify({url})
+});
 
 const handleResponse = async (res: Response) => {
   console.log(res);

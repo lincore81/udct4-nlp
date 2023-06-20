@@ -1,8 +1,11 @@
-import './client/styles/resets.scss';
-import './client/styles/base.scss';
-import './client/styles/footer.scss';
-import './client/styles/form.scss';
-import './client/styles/header.scss';
+import isUrl from "is-url";
+
+import './styles/resets.scss';
+import './styles/base.scss';
+import './styles/footer.scss';
+import './styles/form.scss';
+import './styles/header.scss';
+
 
 const ENDPOINT = "/api";
 
@@ -15,9 +18,12 @@ if (!(formElem && inputElem && errorsElem && resultsElem)) {
   throw new Error("I expected a few more elements to be honest.");
 }
 
-const getSentiment = async (url: string) => await fetch(ENDPOINT, {
+const getApiResponse = async (url: string) => await fetch(ENDPOINT, {
   method: "POST",
-  body: JSON.stringify({url})
+  body: JSON.stringify(isUrl(url)? {url} : {txt: url}),
+  headers: {
+    "Content-Type": "application/json"
+  }
 });
 
 const handleResponse = async (res: Response) => {
@@ -38,7 +44,7 @@ formElem.onsubmit = e => {
   const url = inputElem?.value.trim();
   if (url) {
     errorsElem.textContent = "";
-    getSentiment(url)
+    getApiResponse(url)
       .then(handleResponse)
       .catch(handleError);
   } else {

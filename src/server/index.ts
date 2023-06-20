@@ -13,17 +13,19 @@ app.use(bodyParser.json());
 app.use(express.static('dist'));
 app.use('/styles', express.static('src/client/styles'));
 
+
+app.listen(port, () => {
+    console.log(`Server listening on ${port}.`);
+});
+
 app.post('/api', async (req, res) => {
     const json = req.body;
-    if (json?.url) {
-        const response = await request(json.url);
+    console.log("Request: ", req.body);
+    if (json?.url || json?.txt) {
+        const response = await request(json?.url || json?.txt, !!json.url);
         console.log("Response: ", response);
         res.send(response);
     } else {
         res.sendStatus(400);
     }
-});
-
-app.listen(port, () => {
-    console.log(`Server listening on ${port}.`);
 });

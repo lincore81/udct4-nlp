@@ -1,6 +1,8 @@
+@use "resets";
 @use "theme";
 @use "typography";
 @use "fancybg";
+@use "content";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
@@ -18,20 +20,10 @@ body {
     min-height: 100vh;
 }
 
-#content {
-    min-width: 320px;
-    width: 60%;
-    max-width: 800px;
-    margin: auto;
-    background: theme.$bg;
-    height: 100vh;
-}
 
-section {
-    max-width: 800px;
-    margin: 50px auto;
+.hidden {
+    display: none !important;
 }
-
 
 .invert {
     filter: invert(0.95);

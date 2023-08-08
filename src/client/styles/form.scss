@@ -1,12 +1,16 @@
 form {
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
+    display: flex;
+    gap: 1rem;
 }
 
-input {
-    padding: 5px 20px;
+input[type="text"] {
     width: 100%;
     line-height: 16px;
-    margin: 10px 0;
+    flex: 1;
+    height: 2rem;
+}
+
+input[type="submit"] {
+    width: min-content;
+    height: 2rem;
 }

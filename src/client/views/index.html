@@ -17,25 +17,25 @@
       <nav>
         <ul>
           <li>
-            <a class="valign" href="https://github.com/lincore81/udct4-nlp/">
+            <a class="valign" target="_blank" href="https://github.com/lincore81/udct4-nlp/">
               <img class="invert scale-75" src="./icons/github-logo.svg">
               lincore81/udct4-nlp
             </a>
           </li>
           <li>
-            <a class="valign" href="https://meaningcloud.com">
+            <a class="valign" target="_blank" href="https://meaningcloud.com">
               <img class="invert scale-75" src="./icons/cloud.svg">
               MeaningCloud
             </a>
           </li>
           <li>
             <ul class="flex-row text-small gap-1 p-0">
-              <li><a href="https://sass-lang.com">express</a></li>
-              <li><a href="https://jestjs.io">jest</a></li>
-              <li><a href="https://phosphoricons.com">phosphor</a></li>
-              <li><a href="https://sass-lang.com">sass</a></li>
-              <li><a href="https://typescriptlang.org/">ts</a></li>
-              <li><a href="https://webpack.js.org">webpack</a></li>
+              <li><a target="_blank" href="https://sass-lang.com">express</a></li>
+              <li><a target="_blank" href="https://jestjs.io">jest</a></li>
+              <li><a target="_blank" href="https://phosphoricons.com">phosphor</a></li>
+              <li><a target="_blank" href="https://sass-lang.com">sass</a></li>
+              <li><a target="_blank" href="https://typescriptlang.org/">ts</a></li>
+              <li><a target="_blank" href="https://webpack.js.org">webpack</a></li>
             </ul>
           </li>
         </ul>
@@ -43,21 +43,29 @@
 
     <main>
       <section>
-        <form class="">
-          <input type="text" value="" placeholder="Enter text or a url to analyse">
+        <form>
+          <input type="text" value="" placeholder="Enter text or a url to analyse (don't forget http(s))">
           <input type="submit" name="" value="Submit">
         </form>
       </section>
 
       <section>
-        <strong>Form Results:</strong>
-        <div id="errors"></div>
-        <div id="results"></div>
+        <div id="loading" class="hidden">Analysing, pls wait</div>
+        <div id="errors" class="hidden"></div>
+        <div id="results" class="hidden">
+          <h2>Results</h2>
+          <div id="agreement"></div>
+          <div id="confidence"></div>
+          <div id="irony"></div>
+          <div id="polarity"></div>
+          <div id="subjectivity"></div>
+          <div id="highlights"></div>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>This is a footer</p>
+      <p>(c) 2023 Dominik Rosehnal, no rights reserved.</p>
     </footer>
   </div>
 </body>

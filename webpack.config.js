@@ -51,9 +51,13 @@ const config = {
                 ],
             },
             {
-                test: /\.(svg|ttf|woff|woff2|png|jpg|gif)$/i,
+                test: /\.(ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
+            {
+                test: /\.svg$/i,
+                type: 'asset/resource'
+            }
         ],
     },
     resolve: {

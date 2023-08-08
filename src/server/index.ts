@@ -22,9 +22,14 @@ app.post('/api', async (req, res) => {
     const json = req.body;
     console.log("Request: ", req.body);
     if (json?.url || json?.txt) {
-        const response = await request(json?.url || json?.txt, !!json.url);
-        console.log("Response: ", response);
-        res.send(response);
+        try {
+            const response = await request(json?.url || json?.txt, !!json.url);
+            console.log("Response: ", response);
+            res.send(response);
+        } catch (e) {
+            console.error(e);
+            res.sendStatus(500);
+        }
     } else {
         res.sendStatus(400);
     }

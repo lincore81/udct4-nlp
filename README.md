@@ -1,7 +1,9 @@
 # Udacity Project 4: Natural Language Processing
 I'm using typescript and a modern webpack config, hope that's alright.
 
-## Running the project
+## Cloning and running the code
+You will need a meaningcloud api key.
+
 ```
 git clone https://github.com/lincore81/udct4-nlp.git
 cd udct4-nlp

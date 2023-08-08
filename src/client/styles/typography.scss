@@ -1,0 +1,9 @@
+@use "theme";
+
+:root {
+  font-family: theme.$font;
+}
+
+.text-small {
+  font-size: small;
+}

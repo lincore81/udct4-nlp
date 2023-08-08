@@ -1,0 +1,26 @@
+$duration: 90s;
+
+:root {
+    background: linear-gradient(270deg, #217d87, #7a336e);
+    background-size: 400% 400%;
+
+    -webkit-animation: FancyGradient $duration ease infinite;
+    -moz-animation: FancyGradient $duration ease infinite;
+    animation: FancyGradient $duration ease infinite;
+}
+
+@-webkit-keyframes FancyGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes FancyGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes FancyGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

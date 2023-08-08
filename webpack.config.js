@@ -5,12 +5,11 @@ const path = require('path');
 
 const DotenvPlugin = require('dotenv-webpack');
 const ESLintPlugin = require("eslint-webpack-plugin");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const HTMLPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === 'production';
-const stylesHandler = 'style-loader';
 
 const config = {
     entry: './src/client/index.ts',
@@ -27,8 +26,13 @@ const config = {
             extensions: ['.ts', '.ts', '.js'],
             exclude: 'node_modules'
         }),
+        new CopyPlugin({
+            patterns: [
+                { from: "src/client/icons", to: "icons" },
+            ],
+        }),
         new DotenvPlugin(),
-        new HTMLWebpackPlugin({template: 'src/client/views/index.html'}),
+        new HTMLPlugin({template: 'src/client/views/index.html'}),
         new CleanWebpackPlugin(),
     ],
     module: {

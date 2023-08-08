@@ -1,5 +1,56 @@
+@use "theme";
+
 header {
-    display: flex;
-    justify-content: space-between;
     padding: 10px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  max-width: min-content;
+  padding-right: 2rem;
+  font-weight: bold;
+  text-align: right;
+  border-right: 1px solid white;
+  vertical-align: middle;
+}
+
+nav {
+    margin-left: 1rem;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+nav li {
+    padding: 0.0rem 0.5rem;
+    transition: border-top 0.3s, opacity 0.3s, text-shadow 0.3s; 
+    a {
+        border-top: 2px solid transparent;
+        padding: 0;
+        display: block;
+        text-decoration: none;
+        color: theme.$fg; 
+        &:hover {
+            border-top-color: theme.$accent;
+        }
+    }
+}
+
+li > ul > li {
+    padding: 0.2rem 0.1rem;
+}
+
+
+li > ul {
+    border-top: none;
+    flex-wrap: wrap;
+    &:hover {
+        border-top: none;
+    }
 }

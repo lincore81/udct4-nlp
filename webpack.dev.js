@@ -1,2 +1,13 @@
-// This file only exists because the rubric says it has to.
-// Both dev and prod environments are set up in webpack.config.js.
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-env node */
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
+
+module.exports = merge(common, {
+  mode: "development",
+  devtool: "inline-source-map",
+  devServer: {
+      open: true,
+      host: 'localhost',
+  }
+});
